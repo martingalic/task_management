@@ -1,0 +1,55 @@
+<div class="task">
+  <form action="" [formGroup]="taskForm">
+    <div class="create">
+      <label>Title *</label>
+      <input type="text" formControlName="title">
+
+      <label>Due Date *</label>
+      <input type="date" formControlName="date">
+
+      <label>Description</label>
+      <textarea name="" id="" rows="3" formControlName="description"></textarea>
+    </div>
+    <button class="btn add" type="submit" *ngIf="!isEditForm" [disabled]="!taskForm.valid"
+      (click)="addTask()">Add</button>
+    <!-- TODO disable btn color -->
+    <!--  -->
+    <button class="btn add" type="submit" *ngIf="isEditForm" [disabled]="!taskForm.valid"
+      (click)="editTask()">Save</button>
+  </form>
+
+  <br>
+  <hr>
+  <p>Task list</p>
+  <hr>
+  <ng-container *ngIf="tasks.length else noContent">
+    <div class="header">
+      <span>Status</span>
+      <span>Title</span>
+      <!--  TODO sort icon -->
+      <span class="sort" (click)="sort()" [ngClass]="{'active': isAscending}">
+        Date
+      </span>
+      <span>Desc.</span>
+      <span>Controls</span>
+    </div>
+
+    <div class="list">
+      <div class="card" *ngFor="let task of tasks" [ngClass]="{'finished': task.status}">
+        <input type="checkbox" [checked]="task.status" (change)="toggleTask(task)">
+        <span>{{task.title}}</span>
+        <small>{{task.date}}</small>
+        <small>{{task.description}}</small>
+        <div class="controls">
+          <!-- TODO icons -->
+          <button class="btn edit" (click)="getTask(task)">Edit</button>
+          <button class="btn delete" (click)="deleteTask(task)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noContent>
+    <small>No content</small>
+  </ng-template>
+
+</div>
