@@ -76,7 +76,6 @@ export class TasksComponent implements OnInit {
     this.tasks = this.tasks.filter(t => t.id !== task.id);
   }
 
-  // TODO add array validateFields
   formReset() {
     this.taskForm.reset();
     for (let control in this.taskForm.controls) {

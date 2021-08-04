@@ -12,8 +12,6 @@
     </div>
     <button class="btn add" type="submit" *ngIf="!isEditForm" [disabled]="!taskForm.valid"
       (click)="addTask()">Add</button>
-    <!-- TODO disable btn color -->
-    <!--  -->
     <button class="btn add" type="submit" *ngIf="isEditForm" [disabled]="!taskForm.valid"
       (click)="editTask()">Save</button>
   </form>
@@ -26,7 +24,6 @@
     <div class="header">
       <span>Status</span>
       <span>Title</span>
-      <!--  TODO sort icon -->
       <span class="sort" (click)="sort()" [ngClass]="{'active': isAscending}">
         Date
       </span>
@@ -41,7 +38,6 @@
         <small>{{task.date}}</small>
         <small>{{task.description}}</small>
         <div class="controls">
-          <!-- TODO icons -->
           <button class="btn edit" (click)="getTask(task)">Edit</button>
           <button class="btn delete" (click)="deleteTask(task)">Delete</button>
         </div>
